@@ -1,0 +1,28 @@
+package pages
+
+templ Projects() {
+    @layouts.Main() {
+        @components.Header()
+        <div class="main">
+            <div class="home-banner">
+                <div class="home-banner-title">
+                    <p>Take a look at my experiences.</p>
+                    <div class="tapping">
+                        <h1>My projects</h1>
+                    </div>
+                    <h2>Programming, more than just a Job.</h2>
+                </div>
+                <img src="/static/images/hometop.png" alt="Home banner" />
+            </div>
+            <h2>Projects</h2>
+            <p>Replace with projects</p>
+            <form class="searchbar" hx-get="/hm/projects" hx-target=".projects">
+                <input type="text" name="keyword" placeholder="Search via keywords"/>
+                <button type="submit">Search</button>
+            </form>
+            <div class="projects" hx-get="/hm/projects" hx-target=".projects" hx-trigger="load" >
+            </div>
+        </div>
+        @components.Footer()
+    }
+}

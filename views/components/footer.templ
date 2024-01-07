@@ -1,0 +1,11 @@
+package components
+
+import "time"
+
+var currentYear = time.Now().Format("2006")
+
+templ Footer() {
+    <footer>
+        <p>Made with <span id="footer-emoji">&#10084;</span> by <a href="https://github.com/yannis94">yannis94</a> © Kagami - {currentYear}</p>
+    </footer>
+}

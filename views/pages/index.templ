@@ -1,0 +1,38 @@
+package pages
+
+import (
+    "github.com/yannis94/kagami/views/layouts"
+    "github.com/yannis94/kagami/views/components"
+)
+
+templ Index() {
+    @layouts.Main() {
+        @components.Header()
+        <div class="main">
+            <div class="home-banner">
+                <div class="home-banner-title">
+                    <p>Welcome on my portfolio.</p>
+                    <div class="tapping">
+                        <h1>Full-Stack Developper</h1>
+                    </div>
+                    <h2>Yannis Bengueci</h2>
+                </div>
+                <img src="/static/images/bannertop.png" alt="Home banner" />
+            </div>
+            <div class="container">
+            <h2 class="container-title">Who am I</h2>
+            <div class="left-content">
+            <img src="/static/images/profilPic.png" alt="The web site owner's pretty face" />
+            </div>
+            <div class="right-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec leo ac nulla aliquam efficitur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed diam nunc, rhoncus non eros ac, tincidunt tristique est. Vivamus cursus semper dolor, sit amet tempor nibh egestas sed. Etiam ultrices ligula eget turpis mollis, at facilisis ex mattis. Phasellus ex lorem, aliquam vel ipsum ut, varius dictum dolor. Donec venenatis elit dui, eget dignissim mi luctus a. Donec vel varius enim. Suspendisse cursus lorem at urna porttitor, quis pretium ipsum consectetur. Fusce vitae sodales dolor.</p>
+            <button class="btn btn-primary" hx-get="/hm/contact" hx-target=".main" hx-swap="beforeend">Contact me</button>
+            </div>
+            </div>
+            <h2>Skills</h2>
+            <div class="skills" hx-get="/hm/skills" hx-trigger="load" hx-swap="innerHTML">
+            </div>
+        </div>
+        @components.Footer()
+    }
+}
