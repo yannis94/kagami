@@ -1,0 +1,59 @@
+package pages
+
+import (
+    "github.com/yannis94/kagami/models"
+    "github.com/yannis94/kagami/views/layouts"
+    "github.com/yannis94/kagami/views/components"
+    "github.com/yannis94/kagami/views/components/forms"
+)
+
+templ Project(project *models.Project) {
+    @layouts.Main() {
+        @components.Header()
+        <div class="main">
+            <div class="home-banner">
+                <div class="home-banner-title">
+                    <div class="keywords">
+                        for _, keyword := range project.Keywords {
+                            <p class="pill">{keyword}</p>
+                        }
+                    </div>
+                    <p>Small line of code make great things.</p>
+                    <div class="tapping">
+                        <h1>{project.Name}</h1>
+                    </div>
+                    <h2>Programming, more than just a Job.</h2>
+                </div>
+                <div>
+                    <h3>About</h3>
+                    <p>{project.Overview}</p>
+                    <p>Repository link :
+                        if project.Repository != "" {
+                            <a href={templ.URL(project.Repository)} target="_blank">{project.Repository}</a>
+                        } else {
+                            <span>Private</span>
+                        }
+                    .</p>
+                </div>
+            </div>
+            <div class="container">
+                <h2 class="container-title">About</h2>
+                <p>{project.Description}</p>
+            </div>
+            <h2>See also</h2>
+            <p>Create query to get linked projects (by keywords)</p>
+        </div>
+        @components.Footer()
+    }
+}
+
+templ AdminProject(project *models.Project) {
+    @layouts.MainAdmin() {
+        @components.Header()
+        <div class="main">
+            <h1>Kagami - { project.Name }</h1>
+            @forms.UpdateProject(project)
+        </div>
+        @components.Footer()
+    }
+}

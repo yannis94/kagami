@@ -1,0 +1,36 @@
+package cards
+
+import (
+    "fmt"
+    "strconv"
+
+    "github.com/yannis94/kagami/models"
+)
+
+func getAdminSkillURL(id string) string {
+    return fmt.Sprintf("/yayadmin/skills/%s", id)
+}
+
+templ Skill(skills []*models.Skill) {
+    for _, skill := range skills {
+        <div class="card">
+            <img src={ skill.Logo } alt="Skill's logo"/>
+            <h3>{ skill.Name }</h3>
+            <p>Level { strconv.Itoa(skill.Level) }/10</p>
+            <p class="pill">{ skill.Category }</p>
+        </div>
+    }
+}
+
+templ AdminSkill(skills []*models.Skill) {
+    for _, skill := range skills {
+        <div class="card">
+            <img src={ skill.Logo } alt="Skill's logo"/>
+            <h3>{ skill.Name }</h3>
+            <p>Level { strconv.Itoa(skill.Level) }/10</p>
+            <p class="pill">{ skill.Category }</p>
+            <button hx-trigger="click" hx-delete={ fmt.Sprintf("/hm/yayadmin/skills/%s", skill.ID) } class="btn btn-secondary">Delete</button>
+            <a href={ templ.URL(getAdminSkillURL(skill.ID))} class="btn btn-primary">Update</a>
+        </div>
+    }
+}

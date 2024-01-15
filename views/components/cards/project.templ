@@ -1,0 +1,47 @@
+package cards
+
+import (
+    "fmt"
+
+    "github.com/yannis94/kagami/models"
+)
+
+func getProjectURL(id string) string {
+    return fmt.Sprintf("/projects/%s", id)
+}
+
+func getAdminProjectURL(id string) string {
+    return fmt.Sprintf("/yayadmin/projects/%s", id)
+}
+
+templ Project(projects []*models.Project) {
+    for _, project := range projects {
+        <div class="card">
+            <h3>{ project.Name }</h3>
+            <p>{ project.Overview }</p>
+            <div class="keywords">
+                for _, keyword := range project.Keywords {
+                    <p class="pill">{ keyword }</p>
+                }
+            </div>
+            <a href={templ.URL(getProjectURL(project.ID))} class="btn btn-primary">See more</a>
+        </div>
+    }
+}
+
+templ AdminProject(projects []*models.Project) {
+    for _, project := range projects {
+        <div class="card">
+            <h3>{ project.Name }</h3>
+            <p>{ project.Overview }</p>
+            <div class="keywords">
+                for _, keyword := range project.Keywords {
+                    <p class="pill">{ keyword }</p>
+                }
+            </div>
+            <button class="btn btn-secondary" hx-trigger="click" hx-delete={ fmt.Sprintf("/hm/yayadmin/projects/%s", project.ID) } >Delete</button>
+            <a href={ templ.URL(getAdminProjectURL(project.ID)) } class="btn btn-primary">Update</a>
+        </div>
+    }
+}
+

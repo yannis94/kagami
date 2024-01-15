@@ -1,0 +1,24 @@
+package pages
+
+import (
+    "github.com/yannis94/kagami/views/layouts"
+    "github.com/yannis94/kagami/views/components"
+)
+
+templ AdminLogin() {
+    @layouts.MainAdmin() {
+        <div class="main">
+            <h1>Login</h1>
+            <div class="container">
+                <h2 class="container-title">Welcome</h2>
+                <form hx-post="/hm/yayadmin/login" hx-indicator="#spinner">
+                    <input type="text" name="username" placeholder="Username" />
+                    <input type="password" name="password" placeholder="Password" />
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <img src="/static/images/spinner.svg" class="htmx-indicator" id="spinner"/>
+            </div>
+        </div>
+        @components.Footer()
+    }
+}

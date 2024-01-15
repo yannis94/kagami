@@ -1,5 +1,10 @@
 package pages
 
+import (
+    "github.com/yannis94/kagami/views/layouts"
+    "github.com/yannis94/kagami/views/components"
+)
+
 templ Projects() {
     @layouts.Main() {
         @components.Header()
@@ -14,13 +19,10 @@ templ Projects() {
                 </div>
                 <img src="/static/images/hometop.png" alt="Home banner" />
             </div>
-            <h2>Projects</h2>
-            <p>Replace with projects</p>
-            <form class="searchbar" hx-get="/hm/projects" hx-target=".projects">
-                <input type="text" name="keyword" placeholder="Search via keywords"/>
-                <button type="submit">Search</button>
-            </form>
-            <div class="projects" hx-get="/hm/projects" hx-target=".projects" hx-trigger="load" >
+            <div id="project-container">
+                <div id="keyword-search" hx-get="/hm/projects/keywords" hx-trigger="load"></div>
+                <div class="projects" hx-post="/hm/projects" hx-target=".projects" hx-trigger="load" hx-indicator="#spinner" ></div>
+                <img src="/static/images/spinner.svg" id="spinner" class="htmx-indicator" />
             </div>
         </div>
         @components.Footer()

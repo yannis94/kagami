@@ -1,0 +1,30 @@
+package forms
+
+import (
+    "fmt"
+
+    "github.com/yannis94/kagami/helpers"
+    "github.com/yannis94/kagami/models"
+)
+
+templ CreateProject() {
+    <form class="admin-form" hx-post="/yayadmin/project" hx-target=".form-result" >
+        <input type="text" name="name" placeholder="Name" />
+        <textarea name="overview" maxlength="50" rows="2" cols="25" placeholder="Project's overview"></textarea>
+        <textarea name="description" maxlength="500" rows="5" cols="25" placeholder="Project's overview"></textarea>
+        <input type="text" name="keywords" placeholder="Keywords (separate by ,)" />
+        <input type="text" name="repository" placeholder="Github/Gitlab's repository link" />
+        <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+}
+
+templ UpdateProject(project *models.Project) {
+    <form hx-put={ fmt.Sprintf("/hm/yayadmin/projects/%s", project.ID) } >
+        <input type="text" name="name" placeholder="name" value={project.Name} />
+        <textarea name="overview" maxlength="50" rows="2" cols="25" placeholder="Project's overview" >{ project.Overview }</textarea>
+        <textarea name="description" maxlength="500" rows="5" cols="25" placeholder="Project's overview" >{ project.Description }</textarea>
+        <input type="text" name="keywords" placeholder="keywords" value={ helpers.FromArrayToString(project.Keywords, ",") } />
+        <input type="text" name="repository" placeholder="Github/Gitlab's repository link" value={ project.Repository } />
+        <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+}

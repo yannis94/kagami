@@ -20,17 +20,37 @@ templ Index() {
                 <img src="/static/images/bannertop.png" alt="Home banner" />
             </div>
             <div class="container">
-            <h2 class="container-title">Who am I</h2>
-            <div class="left-content">
-            <img src="/static/images/profilPic.png" alt="The web site owner's pretty face" />
-            </div>
-            <div class="right-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec leo ac nulla aliquam efficitur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed diam nunc, rhoncus non eros ac, tincidunt tristique est. Vivamus cursus semper dolor, sit amet tempor nibh egestas sed. Etiam ultrices ligula eget turpis mollis, at facilisis ex mattis. Phasellus ex lorem, aliquam vel ipsum ut, varius dictum dolor. Donec venenatis elit dui, eget dignissim mi luctus a. Donec vel varius enim. Suspendisse cursus lorem at urna porttitor, quis pretium ipsum consectetur. Fusce vitae sodales dolor.</p>
-            <button class="btn btn-primary" hx-get="/hm/contact" hx-target=".main" hx-swap="beforeend">Contact me</button>
-            </div>
+                <h2 class="container-title">Who am I</h2>
+                <div class="left-content">
+                    <img src="/static/images/profilPic.png" alt="The web site owner's pretty face" />
+                </div>
+                <div class="right-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec leo ac nulla aliquam efficitur. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed diam nunc, rhoncus non eros ac, tincidunt tristique est. Vivamus cursus semper dolor, sit amet tempor nibh egestas sed. Etiam ultrices ligula eget turpis mollis, at facilisis ex mattis. Phasellus ex lorem, aliquam vel ipsum ut, varius dictum dolor. Donec venenatis elit dui, eget dignissim mi luctus a. Donec vel varius enim. Suspendisse cursus lorem at urna porttitor, quis pretium ipsum consectetur. Fusce vitae sodales dolor.</p>
+                    <button class="btn btn-primary" hx-get="/hm/contact" hx-target=".main" hx-swap="beforeend">Contact me</button>
+                </div>
             </div>
             <h2>Skills</h2>
-            <div class="skills" hx-get="/hm/skills" hx-trigger="load" hx-swap="innerHTML">
+            <form hx-get="/hm/skills" hx-trigger="change" hx-target=".skills" hx-swap="innerHTML" hx-indicator="#spinner">
+                <p>Sort by: </p>
+                <select hx-get="/hm/skills/categories" hx-swap="beforeend" hx-target="this" hx-trigger="load" name="category" >
+                    <option value="">All</option>
+                </select>
+                <div class="skills" hx-get="/hm/skills" hx-trigger="load" hx-target="this" hx-swap="innerHTML" hx-indicator="#spinner">
+                </div>
+                <img src="/static/images/spinner.svg" class="htmx-indicator" id="spinner"/>
+            </form>
+            <div class="container">
+                <h2 class="container-title">My background</h2>
+                <ul>
+                    <li>
+                        <h3>Urbanhub</h3>
+                        <p>Lorem ipsum</p>
+                    </li>
+                    <li>
+                        <h3>EEMI</h3>
+                        <p>Lorem ipsum</p>
+                    </li>
+                </ul>
             </div>
         </div>
         @components.Footer()

@@ -1,0 +1,28 @@
+package pages
+
+import (
+    "fmt"
+
+	"github.com/yannis94/kagami/views/layouts"
+	"github.com/yannis94/kagami/views/components"
+)
+
+templ Error(statusCode int, msg string) {
+    @layouts.Main() {
+        @components.Header()
+        <div class="main">
+            <div class="home-banner">
+                <div class="home-banner-title">
+                    <a href="/" class="btn btn-primary">Home</a>
+                    <p>Go back to home.</p>
+                    <div class="tapping">
+                        <h1>Status { fmt.Sprintf("%d", statusCode) }</h1>
+                    </div>
+                    <h2>Kagami - { msg }</h2>
+                </div>
+                <img src="/static/images/error.png" alt="Error image" />
+            </div>
+        </div>
+        @components.Footer()
+    }
+}

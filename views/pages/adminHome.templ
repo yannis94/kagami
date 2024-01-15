@@ -1,0 +1,25 @@
+package pages
+
+import (
+    "github.com/yannis94/kagami/views/layouts"
+    "github.com/yannis94/kagami/views/components"
+    "github.com/yannis94/kagami/views/components/forms"
+)
+
+templ AdminHome() {
+    @layouts.MainAdmin() {
+        <div class="main">
+            <h1>Kagami</h1>
+            <div class="form-result"></div>
+            <h2>Skills</h2>
+            @forms.CreateSkill()
+            <div hx-get="/hm/yayadmin/skills" hx-trigger="load" >
+            </div>
+            <h2>Add a Project</h2>
+            @forms.CreateProject()
+            <div hx-get="/hm/yayadmin/projects" hx-trigger="load" >
+            </div>
+        </div>
+        @components.Footer()
+    }
+}

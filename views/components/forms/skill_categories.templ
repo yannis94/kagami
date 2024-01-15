@@ -1,0 +1,7 @@
+package forms
+
+templ SkillCategories(categories []string) {
+    for _, category := range categories {
+        <option value={category}>{category}</option>
+    }
+}

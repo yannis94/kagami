@@ -1,0 +1,14 @@
+package forms
+
+templ ProjectKeywords(keywords []string) {
+    <label class="btn btn-third">
+        <input type="radio" value="" name="keyword" hx-post="/hm/projects" hx-target=".projects" hx-trigger="click"/>
+        See all
+    </label>
+    for _, keyword := range keywords {
+        <label class="btn btn-third">
+            <input type="radio" value={ keyword } name="keyword" hx-post="/hm/projects" hx-target=".projects" hx-trigger="click"/>
+            { keyword }
+        </label>
+    }
+}

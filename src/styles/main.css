@@ -1,11 +1,11 @@
 :root {
-    --color-primary: #3C3C3B;
+    --color-primary: #2f2f2f;
     --color-secondary: #EBEBD3;
     --color-third: #E9806E;
     --color-warning: #a6262e;
     --color-succes: #048A81;
     --btn-color-primary: #8A89C0;
-    --btn-color-secondary: #54C6EB;
+    --btn-color-secondary: #539fef;
     --font-title: 'Montserrat', sans-serif;
     --font-text: 'Ubuntu Mono', monospace;
     --box-shadow: 0px 0px 15px 4px rgba(10,10,10,0.4);
@@ -56,6 +56,26 @@ input:focus {
     border: solid 2px var(--btn-color-primary);
 }
 
+input[type="radio"] {
+  display: none;
+}
+
+select {
+    width: 50%;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: solid 1px var(--btn-color-secondary);
+    background-color: transparent;
+    color: var(--btn-color-secondary);
+    font-weight: bold;
+    font-family: var(--font-text);
+    font-size: 18px;
+}
+
+select:focus {
+    border: solid 2px var(--btn-color-secondary);
+}
+
 footer {
     width: 60%;
     text-align: center;
@@ -88,6 +108,9 @@ footer {
     text-decoration: underline;
     font-style: italic;
 }
+#navbar a {
+    font-size: 20px;
+}
 
 .main {
     width: calc(100% - 50px);
@@ -104,6 +127,7 @@ footer {
     border-radius: 7px;
     transition: 0.4s;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .btn:hover {
@@ -120,12 +144,23 @@ footer {
     background-color: var(--btn-color-secondary);
 }
 
+.btn-third {
+    background-color: var(--color-primary);
+    border: solid 1px var(--btn-color-secondary);
+    border-radius: var(--border-radius);
+    color: var(--btn-color-secondary);
+}
+
 .card {
     padding: 20px;
     background-color: var(--color-secondary);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     color: black;
+}
+
+.card > img {
+    width: 100%;
 }
 
 .pannel {
@@ -151,6 +186,7 @@ footer {
     border-radius: 20px;
     width: fit-content;
     font-weight: bold;
+    color: white;
 }
 
 .container {
@@ -208,7 +244,7 @@ footer {
 .home-banner h1 {
     margin: 10px 0px;
     font-size: 45px;
-    color: #048a4b;
+    color: #3ec485;
 }
 
 .home-banner h2 {
@@ -286,6 +322,19 @@ footer {
     cursor: pointer;
     font-size: 35px;
     margin: 0;
+}
+
+#keyword-search {
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+#project-container {
+    overflow: hidden;
 }
 
 @keyframes flash {

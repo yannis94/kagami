@@ -1,0 +1,28 @@
+package forms
+
+import (
+    "fmt"
+    "strconv"
+
+	"github.com/yannis94/kagami/models"
+)
+
+templ CreateSkill() {
+    <form class="admin-form" hx-post="/yayadmin/skill" hx-target=".form-result" hx-encoding="multipart/form-data" >
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="category" placeholder="Category" />
+        <input type="number" name="level" step="1" min="0" max="10" placeholder="Level" />
+        <input type="file" name="logo" placeholder="Skill's logo" />
+        <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+}
+
+templ UpdateSkill(skill *models.Skill) {
+    <form class="admin-form" hx-put={ fmt.Sprintf("/hm/yayadmin/skills/%s", skill.ID) }  hx-encoding="multipart/form-data" >
+        <input type="text" name="name" placeholder="Name" value={ skill.Name } />
+        <input type="text" name="category" placeholder="Category" value={ skill.Category }/>
+        <input type="number" name="level" step="1" min="0" max="10" placeholder="Level" value={ strconv.Itoa(skill.Level) } />
+        <input type="file" name="logo" placeholder="Skill's logo" />
+        <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+}

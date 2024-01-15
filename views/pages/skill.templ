@@ -1,0 +1,19 @@
+package pages 
+
+import (
+	"github.com/yannis94/kagami/models"
+	"github.com/yannis94/kagami/views/layouts"
+	"github.com/yannis94/kagami/views/components"
+	"github.com/yannis94/kagami/views/components/forms"
+)
+
+templ AdminSkill(skill *models.Skill) {
+    @layouts.MainAdmin() {
+        <div class="main">
+            <h1>{ skill.Name }</h1>
+            <img src={ skill.Logo } alt="Skill's logo" />
+            @forms.UpdateSkill(skill)
+        </div>
+        @components.Footer()
+    }
+}
