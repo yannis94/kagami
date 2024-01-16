@@ -60,3 +60,4 @@ func HashPassword(pwd string) (string, error) {
 func IsPasswordCorrect(hash, pwd string) error {
     return bcrypt.CompareHashAndPassword([]byte(hash), []byte(pwd))
 }
+

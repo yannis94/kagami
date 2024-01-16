@@ -1,6 +1,7 @@
 package pages
 
 import (
+    "fmt"
     "github.com/yannis94/kagami/models"
     "github.com/yannis94/kagami/views/layouts"
     "github.com/yannis94/kagami/views/components"
@@ -41,7 +42,7 @@ templ Project(project *models.Project) {
                 <p>{project.Description}</p>
             </div>
             <h2>See also</h2>
-            <p>Create query to get linked projects (by keywords)</p>
+            <div hx-get={ fmt.Sprintf("/hm/projects/%s/related", project.ID) } hx-trigger="load"></div>
         </div>
         @components.Footer()
     }

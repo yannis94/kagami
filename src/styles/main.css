@@ -150,6 +150,10 @@ footer {
     border-radius: var(--border-radius);
     color: var(--btn-color-secondary);
 }
+.btn-third:hover {
+    box-shadow: none;
+    color: white;
+}
 
 .card {
     padding: 20px;

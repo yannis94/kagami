@@ -45,6 +45,7 @@ func main() {
     hm.GET("/skills", hypermediaHandler.HandleGetSkills)
     hm.GET("/skills/categories", hypermediaHandler.HandleGetSkillCategories)
     hm.GET("/projects/keywords", hypermediaHandler.HandleGetProjectKeywords)
+    hm.GET("/projects/:id/related", hypermediaHandler.HandleGetRelatedProjects)
     hm.POST("/projects", hypermediaHandler.HandleGetProjects)
     hm.POST("/yayadmin/login", adminHandler.HandlePostLogin)
 

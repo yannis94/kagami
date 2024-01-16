@@ -29,6 +29,21 @@ templ Project(projects []*models.Project) {
     }
 }
 
+templ RelatedProjects(projects []*models.Project) {
+    for _, project := range projects {
+        <div class="card">
+            <h3>{ project.Name }</h3>
+            <p>{ project.Overview }</p>
+            <div class="keywords">
+                for _, keyword := range project.Keywords {
+                    <p class="pill">{ keyword }</p>
+                }
+            </div>
+            <a href={templ.URL(getProjectURL(project.ID))} class="btn btn-primary">See more</a>
+        </div>
+    }
+}
+
 templ AdminProject(projects []*models.Project) {
     for _, project := range projects {
         <div class="card">
