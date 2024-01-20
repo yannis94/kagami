@@ -16,10 +16,29 @@ templ Skill(skills []*models.Skill) {
         <div class="card">
             <img src={ skill.Logo } alt="Skill's logo"/>
             <h3>{ skill.Name }</h3>
-            <p>Level { strconv.Itoa(skill.Level) }/10</p>
+            <div class="card-content">
+                <p>Experience:</p>
+                <div class="progress-bar">
+                    <div class="bar" data-level={ strconv.Itoa(skill.Level) }></div>
+                </div>
+            </div>
             <p class="pill">{ skill.Category }</p>
         </div>
     }
+    <script >
+        (function () {
+            let cards = document.querySelectorAll(".skills .card")
+
+            cards.forEach(card => {
+                let progressBar = card.querySelector(".progress-bar")
+                let bar = progressBar.querySelector(".bar")
+                let level = parseInt(bar.dataset.level)
+                if (level !== NaN) {
+                    bar.style.width = `${level * 10}%`
+                }
+            })
+        })()
+    </script>
 }
 
 templ AdminSkill(skills []*models.Skill) {

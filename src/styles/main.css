@@ -1,5 +1,6 @@
 :root {
     --color-primary: #2f2f2f;
+    --color-bg-section: #474a57;
     --color-secondary: #EBEBD3;
     --color-third: #E9806E;
     --color-warning: #a6262e;
@@ -72,6 +73,10 @@ select {
     font-size: 18px;
 }
 
+select:hover {
+    cursor: pointer;
+    }
+
 select:focus {
     border: solid 2px var(--btn-color-secondary);
 }
@@ -81,6 +86,26 @@ footer {
     text-align: center;
     border-top: solid 1px var(--btn-color-secondary);
 }
+
+.section {
+    height: 100vh;
+    width: calc(100vw - 140px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: -85px;
+    padding: 0px 70px;
+}
+
+.section > form {
+    width: 85%;
+}
+
+.secondary-background {
+    background-color: var(--color-bg-section);
+}
+
 .unscrollable {
     overflow: hidden;
 }
@@ -92,7 +117,7 @@ footer {
 
 #navbar > ul {
     padding: 0px;
-    padding-left: 25px;
+    padding-left: 70px;
     display: flex;
     justify-content: flex-start;
 }
@@ -113,8 +138,8 @@ footer {
 }
 
 .main {
-    width: calc(100% - 50px);
-    margin: 25px;
+    width: calc(100% - 140px);
+    padding: 0px 70px;
 }
 
 .btn {
@@ -161,10 +186,19 @@ footer {
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .card > img {
     width: 100%;
+}
+
+.card > h3 {
+    width: 100%;
+    text-align: center;
 }
 
 .pannel {
@@ -197,11 +231,13 @@ footer {
     border: solid 1px var(--btn-color-secondary);
     border-radius: 4px;
     width: calc(100% - 40px);
+    height: 100%;
     padding: 20px;
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 50px 0px;
 }
 
 .container-title {
@@ -238,11 +274,11 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 85vh;
+    height: 75vh;
 }
 
 .home-banner > img {
-    width: 50%;
+    width: 40%;
 }
 
 .home-banner h1 {
@@ -257,7 +293,7 @@ footer {
 }
 
 .home-banner-title {
-    width: 40%;
+    width: 55%;
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
@@ -277,16 +313,35 @@ footer {
     align-items: center;
 }
 
+.searchbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchbar > label {
+    margin-right: 10px;
+}
+
+.skills-container {
+    width: 100%;
+    overflow: hidden;
+}
+
 .skills {
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    cursor: col-resize;
 }
 
 .skills .card {
     width: calc(20% - 40px);
     margin: 20px;
+}
+.skills .card-content {
+    width: 100%;
 }
 
 .popup-background {
@@ -339,6 +394,19 @@ footer {
 
 #project-container {
     overflow: hidden;
+}
+
+.progress-bar {
+    width: 100%;
+    border-radius: 25px;
+    border: solid 3px black;
+    background-color: #8d8f94;
+    height: 10px;
+}
+.bar {
+    height: 100%;
+    background-color: var(--btn-color-secondary);
+    border-radius: 25px;
 }
 
 @keyframes flash {

@@ -29,16 +29,22 @@ templ Index() {
                     <button class="btn btn-primary" hx-get="/hm/contact" hx-target=".main" hx-swap="beforeend">Contact me</button>
                 </div>
             </div>
-            <h2>Skills</h2>
-            <form hx-get="/hm/skills" hx-trigger="change" hx-target=".skills" hx-swap="innerHTML" hx-indicator="#spinner">
-                <p>Sort by: </p>
-                <select hx-get="/hm/skills/categories" hx-swap="beforeend" hx-target="this" hx-trigger="load" name="category" >
-                    <option value="">All</option>
-                </select>
-                <div class="skills" hx-get="/hm/skills" hx-trigger="load" hx-target="this" hx-swap="innerHTML" hx-indicator="#spinner">
+            <div class="section secondary-background">
+                <h2>My skills</h2>
+                <form hx-get="/hm/skills" hx-trigger="change" hx-target=".skills" hx-swap="innerHTML" hx-indicator="#spinner">
+                    <div class="searchbar">
+                        <label>Sort by: </label>
+                        <select hx-get="/hm/skills/categories" hx-swap="beforeend" hx-target="this" hx-trigger="load" name="category" >
+                            <option value="">All</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="skills-container">
+                    <div class="skills" hx-get="/hm/skills" hx-trigger="load" hx-target="this" hx-swap="innerHTML" hx-indicator="#spinner">
+                        <img src="/static/images/spinner.svg" class="htmx-indicator" id="spinner"/>
+                    </div>
                 </div>
-                <img src="/static/images/spinner.svg" class="htmx-indicator" id="spinner"/>
-            </form>
+            </div>
             <div class="container">
                 <h2 class="container-title">My background</h2>
                 <ul>
