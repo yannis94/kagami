@@ -21,7 +21,8 @@ templ Projects() {
             </div>
             <div id="project-container">
                 <div id="keyword-search" hx-get="/hm/projects/keywords" hx-trigger="load"></div>
-                <div class="projects" hx-post="/hm/projects" hx-target=".projects" hx-trigger="load" hx-indicator="#spinner" ></div>
+                <div class="projects" hx-post="/hm/projects" hx-target=".projects" hx-trigger="load" hx-indicator="#spinner" >
+                </div>
                 <img src="/static/images/spinner.svg" id="spinner" class="htmx-indicator" />
             </div>
         </div>

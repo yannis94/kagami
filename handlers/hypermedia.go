@@ -59,8 +59,10 @@ func (h Hypermedia) HandleGetProjects(c echo.Context) error {
         err error
     )
 
-    if c.FormValue("keyword") != "" {
-        projects, err = h.db.Project.GetByKeyword(c.FormValue("keyword"))
+    keyword := c.FormValue("keyword")
+
+    if keyword != "" {
+        projects, err = h.db.Project.GetByKeyword(keyword)
     } else {
         projects, err = h.db.Project.GetAll()
     }
@@ -69,7 +71,11 @@ func (h Hypermedia) HandleGetProjects(c echo.Context) error {
         return c.String(500, err.Error())
     }
 
-    return render(c, cards.Project(projects))
+    if keyword == "" {
+        keyword = "All"
+    }
+
+    return render(c, cards.Project(projects, keyword))
 }
 
 func (h Hypermedia) HandleGetProjectKeywords(c echo.Context) error {

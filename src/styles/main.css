@@ -1,15 +1,15 @@
 :root {
     --color-primary: #2f2f2f;
     --color-bg-section: #474a57;
-    --color-secondary: #EBEBD3;
-    --color-third: #E9806E;
+    --color-secondary: #ebebd3;
+    --color-third: #e9806e;
     --color-warning: #a6262e;
-    --color-succes: #048A81;
-    --btn-color-primary: #8A89C0;
+    --color-succes: #048a81;
+    --btn-color-primary: #8a89c0;
     --btn-color-secondary: #539fef;
-    --font-title: 'Montserrat', sans-serif;
-    --font-text: 'Ubuntu Mono', monospace;
-    --box-shadow: 0px 0px 15px 4px rgba(10,10,10,0.4);
+    --font-title: "Montserrat", sans-serif;
+    --font-text: "Ubuntu Mono", monospace;
+    --box-shadow: 0px 0px 15px 4px rgba(10, 10, 10, 0.4);
     --border-radius: 8px;
 }
 
@@ -25,11 +25,18 @@ body {
     color: white;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--font-title);
 }
 
-p, a, ul, li, label {
+p,
+a,
+ul,
+li,
+label {
     font-family: var(--font-text);
     font-size: 16px;
 }
@@ -55,10 +62,11 @@ input {
 
 input:focus {
     border: solid 2px var(--btn-color-primary);
+    outline: none;
 }
 
 input[type="radio"] {
-  display: none;
+    display: none;
 }
 
 select {
@@ -75,10 +83,11 @@ select {
 
 select:hover {
     cursor: pointer;
-    }
+}
 
 select:focus {
     border: solid 2px var(--btn-color-secondary);
+    outline: none;
 }
 
 footer {
@@ -89,21 +98,45 @@ footer {
 
 .section {
     height: 100vh;
-    width: calc(100vw - 140px);
+    width: calc(100vw - 148px);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    margin-left: -85px;
+    margin-left: -70px;
     padding: 0px 70px;
 }
 
-.section > form {
+.section>form {
     width: 85%;
+}
+
+.section>h2 {
+    font-size: 35px;
 }
 
 .secondary-background {
     background-color: var(--color-bg-section);
+}
+
+.project-description {
+    align-items: flex-start;
+}
+
+.related-projects {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 50px 0px;
+}
+
+.related-projects>.card {
+    width: 40%;
+}
+
+.related-projects::first-child {
+    margin-right: 20%;
 }
 
 .unscrollable {
@@ -115,7 +148,7 @@ footer {
     border-bottom: solid 1px var(--btn-color-secondary);
 }
 
-#navbar > ul {
+#navbar>ul {
     padding: 0px;
     padding-left: 70px;
     display: flex;
@@ -133,6 +166,7 @@ footer {
     text-decoration: underline;
     font-style: italic;
 }
+
 #navbar a {
     font-size: 20px;
 }
@@ -175,6 +209,7 @@ footer {
     border-radius: var(--border-radius);
     color: var(--btn-color-secondary);
 }
+
 .btn-third:hover {
     box-shadow: none;
     color: white;
@@ -192,11 +227,11 @@ footer {
     justify-content: space-between;
 }
 
-.card > img {
+.card>img {
     width: 100%;
 }
 
-.card > h3 {
+.card>h3 {
     width: 100%;
     text-align: center;
 }
@@ -220,6 +255,7 @@ footer {
 
 .pill {
     padding: 5px 10px;
+    margin: 5px;
     background-color: var(--color-third);
     border-radius: 20px;
     width: fit-content;
@@ -277,7 +313,7 @@ footer {
     height: 75vh;
 }
 
-.home-banner > img {
+.home-banner>img {
     width: 40%;
 }
 
@@ -319,7 +355,8 @@ footer {
     justify-content: center;
     align-items: center;
 }
-.searchbar > label {
+
+.searchbar>label {
     margin-right: 10px;
 }
 
@@ -340,6 +377,7 @@ footer {
     width: calc(20% - 40px);
     margin: 20px;
 }
+
 .skills .card-content {
     width: 100%;
 }
@@ -386,30 +424,132 @@ footer {
 #keyword-search {
     padding: 10px 0px;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: nowrap;
     overflow-x: auto;
+}
+
+#keyword-search>label {
+    margin: 0px 5px;
 }
 
 #project-container {
     overflow: hidden;
 }
 
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: calc(100% - 42px);
+}
+
+.card-container>.card {
+    width: 20%;
+    height: 270px;
+    margin: 13px;
+}
+
+.projects-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.projects>.card {
+    width: 25%;
+    height: 275px;
+    margin: 15px;
+}
+
+.card>.keywords {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .progress-bar {
     width: 100%;
     border-radius: 25px;
     border: solid 3px black;
-    background-color: #8d8f94;
+    background-color: #68686a;
     height: 10px;
 }
+
 .bar {
     height: 100%;
     background-color: var(--btn-color-secondary);
     border-radius: 25px;
 }
 
+.container>.project-left {
+    width: 55%;
+    text-align: justify;
+}
+
+.container>.project-right {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: space-around;
+}
+
+.project-right>.keywords {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.project-right>p {
+    text-align: end;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track (the area behind the thumb) */
+::-webkit-scrollbar-track {
+    background-color: #2c3e52;
+    /* Set the background color of the track */
+}
+
+/* Handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+    background-color: var(--btn-color-secondary);
+    /* Set the background color of the thumb */
+    border: 3px solid transparent;
+    /* Set the border of the thumb */
+    border-radius: 6px;
+    /* Round the corners of the thumb */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #0066cc;
+    /* Change the background color on hover */
+}
+
+/* Corner (between the vertical and horizontal scrollbar) */
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+    /* Set the background color of the corner */
+}
+
 @keyframes flash {
-    from { opacity: 0 };
-    to { opacity: 1 };
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

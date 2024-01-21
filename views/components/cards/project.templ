@@ -14,19 +14,22 @@ func getAdminProjectURL(id string) string {
     return fmt.Sprintf("/yayadmin/projects/%s", id)
 }
 
-templ Project(projects []*models.Project) {
-    for _, project := range projects {
-        <div class="card">
-            <h3>{ project.Name }</h3>
-            <p>{ project.Overview }</p>
-            <div class="keywords">
-                for _, keyword := range project.Keywords {
-                    <p class="pill">{ keyword }</p>
-                }
+templ Project(projects []*models.Project, keyword string) {
+    <div class="container card-container">
+        <h3 class="container-title">{ keyword } projects</h3>
+        for _, project := range projects {
+            <div class="card">
+                <h3>{ project.Name }</h3>
+                <p>{ project.Overview }</p>
+                <div class="keywords">
+                    for _, keyword := range project.Keywords {
+                        <p class="pill">{ keyword }</p>
+                    }
+                </div>
+                <a href={templ.URL(getProjectURL(project.ID))} class="btn btn-primary">See more</a>
             </div>
-            <a href={templ.URL(getProjectURL(project.ID))} class="btn btn-primary">See more</a>
-        </div>
-    }
+        }
+    </div>
 }
 
 templ RelatedProjects(projects []*models.Project) {

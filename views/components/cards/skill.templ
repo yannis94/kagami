@@ -34,7 +34,14 @@ templ Skill(skills []*models.Skill) {
                 let bar = progressBar.querySelector(".bar")
                 let level = parseInt(bar.dataset.level)
                 if (level !== NaN) {
-                    bar.style.width = `${level * 10}%`
+                    let target = 0
+                    const fillBarInterval = setInterval(() => {
+                        bar.style.width = `${target}%`
+                        if (target > level * 10) {
+                            clearInterval(fillBarInterval)
+                        }
+                        target++
+                    }, 5)
                 }
             })
         })()

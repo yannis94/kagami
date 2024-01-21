@@ -2,11 +2,13 @@ package pages
 
 import (
     "fmt"
+
     "github.com/yannis94/kagami/models"
     "github.com/yannis94/kagami/views/layouts"
     "github.com/yannis94/kagami/views/components"
     "github.com/yannis94/kagami/views/components/forms"
 )
+
 
 templ Project(project *models.Project) {
     @layouts.Main() {
@@ -14,20 +16,24 @@ templ Project(project *models.Project) {
         <div class="main">
             <div class="home-banner">
                 <div class="home-banner-title">
-                    <div class="keywords">
-                        for _, keyword := range project.Keywords {
-                            <p class="pill">{keyword}</p>
-                        }
-                    </div>
                     <p>Small line of code make great things.</p>
                     <div class="tapping">
                         <h1>{project.Name}</h1>
                     </div>
                     <h2>Programming, more than just a Job.</h2>
                 </div>
-                <div>
-                    <h3>About</h3>
+            </div>
+            <div class="container">
+                <h2 class="container-title">About</h2>
+                <div class="project-left">
                     <p>{project.Overview}</p>
+                </div>
+                <div class="project-right">
+                    <div class="keywords">
+                        for _, keyword := range project.Keywords {
+                            <p class="pill">{keyword}</p>
+                        }
+                    </div>
                     <p>Repository link :
                         if project.Repository != "" {
                             <a href={templ.URL(project.Repository)} target="_blank">{project.Repository}</a>
@@ -37,12 +43,11 @@ templ Project(project *models.Project) {
                     .</p>
                 </div>
             </div>
-            <div class="container">
-                <h2 class="container-title">About</h2>
-                <p>{project.Description}</p>
+            <div class="section secondary-background project-description">
+                @templ.Raw(project.Description)
             </div>
             <h2>See also</h2>
-            <div hx-get={ fmt.Sprintf("/hm/projects/%s/related", project.ID) } hx-trigger="load"></div>
+            <div class="related-projects" hx-get={ fmt.Sprintf("/hm/projects/%s/related", project.ID) } hx-trigger="load"></div>
         </div>
         @components.Footer()
     }
